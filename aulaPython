@@ -1,0 +1,823 @@
+Aula-06 tipos primitivos
+Toda linguagem de programação trabalha com 4 tipos primitivos 
+o python tem até mais.
+int => 7, -4, 0, 9875
+float => 4.5, 0.076, -15.223, 7.0 também conhecido com real
+bool => True, False
+str => 'Olá', '7.5', '', String por estar entre aspas simples
+
+# print
+print('A soma vale', s)
+
+# com mascara, aplicada a partir do python 3
+print('A soma vale {}'.format(s))
+{} => Mascara
+
+#Operadores aritméticos
++ => adição
+- => subtração
+* => multiplicação
+/ => divisão
+** => potência
+// => divisão inteira
+% => resto da divisão
+
+operando (operadores binários precisa de dois operando) operando
+
+
+ordem de precedencia
+1-() => parenteses
+2-** => potencia
+3-*, /, //, % => multiplicação, divisão, divisão inteira, resto da divisão
+4-+, - => soma, subtração
+Executar um programe funcionar não acontece que ele pode ser exatamento
+certo, as operações potem estar errada.
+
+nome = input('Qual é seu nome? ')
+print('Prazer em conhecer {:20}'.format(nome))
+print('Prazer em conhecer{:>20}'.format(nome))
+print('Prazer em conhecer {:<20}'.format(nome))
+print('Prazer em conhecer {:^20}'.format(nome))
+print('Prazer em conhecer {:=^20}'.format(nome))
+'''
+{:20} em 20 caracteres
+{:>20} em 20 caracteres alinhado a direita
+{:<20} em 20 caracteres alinhado a esquerda
+{:^20} em 20 caracteres alinhado ao centro
+{:=^20} em 20 caracteres centralizado com igual aos espaços.
+'''
+
+Aula-08
+Trabalhando com módulos
+Exemplo:
+Comidas
+bebidas    comida    doce
+Python por padrão tem um conjunto limitado de comandos
+isto funciona para que a linguagem seja rápida e os programas
+seja pequenos e se eu precisar de alguma importação eu coloco 
+no meu programa.
+
+import bebida -> importa automaticamente todas as bebidas pré configuradas
+por exemplo vem todos os módulos de bebidas e para utilizar somente um módulo
+do pacote para ficar mais leve.
+
+from doce import pudim
+Existe duas maneiras básicas de importar módulos dentro do python
+
+math -> quando instala o pacote do python já vem importado com python
+math -> matemática
+ceil -> arredondamento para cima
+floor -> arredondamento para baixo
+trunc -> trunca da virgula para frente
+pow -> exponenciação
+sqrt -> raiz quadrada
+factorial -> fatorial
+
+import math -> importa todo o pacote matemático
+from math import sqrt -> square root somente raiz quadrada
+from math import sqrt, ceil -> importando sqrt, ceil
+
+aula-08-a
+
+import math
+num = int(input('Digite um número: '))
+raiz = math.sqrt(num)
+print('A raiz quadrada de {} é igual á {}'.format(num, math.ceil(raiz)))
+#math.ceil(ceil), arredondando para cima
+#math.floor(raiz), arredondando para baixo
+#print('A raiz quadrada de {} é igual á {:.2f}'.format(num, raiz)), utilizando 
+# formatação na mascara, python 3.0
+-------------------------------------------------------------------------------
+from math import sqrt, ceil
+
+num = int(input('Digite um número: '))
+raiz = math.sqrt(num)
+print('A raiz quadrada de {} é igual á {}'.format(num, math.ceil(raiz)))
+
+# python.org 
+# Documentação 
+-------------------------------------------------------------------------------
+import random
+num = random.randint(1, 10)
+
+
+PyPI -> python package index
+todos os pacotes python
+
+Pacotes de internet
+emoji sheet
+
+import emoji
+print('Olá, mundo :sunglasses:', use_aliases=True)
+
+Ela se quer vem instalado no python porém algum programador
+criou e colocou disponivel como modulo e importamos ele para usar
+
+Aula-09
+Manipulando cadeia de caracteres
+curso em video python
+Qualquer linguagem de programação chama de cadeia de caractere
+ou String.
+Sempre representada entre "" ou ''
+'curso em video python'
+
+frase = 'curso em video python'
+Atribuindo uma cadeia de caractere em uma váriavel
+Dentro da memória o python coloca em miniespaços e numera
+com index de 0 até o final.
+Chamada programação sequêncial, e fica muito facil de fazer operações
+dentro da String.
+Exemplo:
+Fatiamento
+mostre 'frase[9]'
+saida V
+
+python diferencia de maiusculas e minusculas
+
+mostre 'frase[9:13]'
+saida Vide
+frase[inicio:fim] -> excluso
+range o ultimo valor não entra na contagem
+
+mostre 'frase[9:21]'
+saida 'Video python'
+
+mostre 'frase[9:12:2]'
+saida VdoPto
+frase[inicio:fim:passo]
+
+mostre 'frase[:5]'
+saida Curso 
+frase[:final] -> do inicio ao final
+
+mostre 'frase[15:]'
+saida Python
+frase[inicio:] -> vai até o final 
+
+mostre 'frase[9::3]'
+saida VePh
+frase[inicio::passo] -> vai do inicio até o fim passo
+
+Análise
+len(frase) -> cumprimento
+frase.count('o') -> conta quantas vezes apareçe a letra 'o' minusculo
+frase.count('o', 0, 13) -> faz uma contagem com fatiamento
+frase.find('deo') -> quantas vezes encontrou 'deo'
+find -> encontrar, index onde ele começa, não encontrando o valor retorna -1
+'Curso' in frase -> dentro de frase existe em fase
+in -> em, retorna Boolean
+
+Transformação
+Via de mão uma cadeia de caracteres em python é imultavél, porém
+conseguimos modificar através de métodos.
+
+frase.replace('Python', 'Android')
+replace -> reposicionar, subistitui 'Python' por 'Android'
+frase.upper() -> Maiuscula
+upper -> prá cima
+frase.lower() -> Minuscula
+lower -> prá baixo
+frase.capitalize() -> Só o primeiro index fica em maiusculo
+frase.title() -> Análisa pelos espaços faz uma quebra de palavra e coloca
+os primeiros em Maiusculo.
+
+   Aprenda Python  
+Exemplo pessoas mais leigas entra no input e tecla varios espaços 
+primeiros e fica espaçado.
+frase.strip() -> remove espaços no inicio e fim
+frase.rstrip() -> remove espaços na direita
+frase.lstrip() -> remove espaços da esquerda
+
+Divisão
+frase.split() -> por padrão é feito em espaço colocando uma flag será feita nela
+# tecnicamente ele gera uma lista na divisão
+
+Junção
+'-'.join(frase) -> junta todos os elementos divididos pelo split e coloca a flag
+- entre elas
+
+Testes
+frase = 'Curso em Video Python'
+#fatiamento
+print(frase)
+print(frase[3])
+print(frase[4:13])
+print(frase[:13])
+print(frase[1:15])
+print(frase[::2])
+print('''
+Para textos longos abre aspas simples 3 vezes
+e fecha aspas
+
+''')
+# Transformação
+# no python tudo é um objeto
+frase.aquiVemMetodo
+print(frase.count('o'))
+print(frase.upper().count('O'))
+# jogada para letra maiuscula conte 'O'
+print(len(frase))
+print(frase.strip())
+print(frase.replace('Python', 'Android'))
+# print(frase[0] = 'j') -> da erro porque ele é imultavél
+# O replace para substituir tem que salvar o resultado alterado
+# frase = frase.replace('Python', 'Android')
+# print(frase)
+print(frase.find('Video'))
+print(frase.lower().find('video'))
+print(frase.split())
+# lista são identificadas por colchetes
+dividido = frase.split()
+print(dividido[0])
+print(dividido[2:3])-> index 2 da lista e mostre indice 3 da String
+
+Aula 10
+Condições Simples(parte-01)
+Causando desvios de acordo com decisão do usuário.
+Possibilides condições, fluxos que a decisão faz de acordo com o programa.
+
+Representação estruturada ou identada
+Se carro.esquerda()
+ carro.siga()
+ carro.direita()
+ carro.siga()
+ carro.direita()
+ carro.esquerda()   -> Bloco Verdadeiro
+ carro.siga()
+ carro.direita()
+ carro.siga()
+senão
+ carro.siga()
+ carro.esquerda()
+ carro.siga()
+ carro.esquerda()  -> Bloco Falso
+ carro.siga()
+fimSe
+carro.pare()
+
+se carro.esquerda()
+ bloco_V_
+senão
+ bloco_F_
+carro.pare()
+
+
+Paradigma de python
+Condicional/condição
+Ou o bloco verdadeiro é executado ou o bloco falso numca os dois.
+
+if carro.esquerda():
+ bloco True
+else:
+ bloco False
+carro.pare()
+
+tempo = int(input('Quantos anos tem seu carro? '))
+if tempo <= 3:
+ print('Carro novo')
+else:
+ print('Carro velho!')
+print('Fim!')
+
+Todo comando que estiver do lado esquerdo ele vai ser executado
+sempre.
+Todo comando que estiver identado vai ser executado ás vezes sim ou não.
+
+Condicao simplificada.
+tempo = int(input('Quantos anos tem seu carro? '))
+print('Carro novo!' if tempo <= 3 else 'Carro Velho!')
+print('Fim')
+
+
+nome = str(input('Qual é seu nome? ')).strip().upper()
+if nome == 'Gustavo':
+ print('Que nome lindo você tem!')
+else:
+ print('Seu nome é tão normal! ')
+print('Bom dia {}'.format(nome))
+
+Somente se condiçional simples
+Se e Senão condicional composta
+
+n1 = float(input('Digite a primeira nota: '))
+n2 = float(input('Digite a segunta nota: '))
+media = (n1 + n2) / 2 
+if media >= 6:
+ print('{:.2f} sua media foi boa'.format(media))
+else:
+ print('{:.2f} sua media foi ruim'.format(media))
+
+# simplificado 
+print('Parabéns!' if media >= 6.5 else 'Estude mais!')
+
+Aula 11 cores no terminal
+
+Mundo 02
+Condições - simples, compostas, aninhadas.
+Iterações - estruturas de repetição com variável de controle, 
+teste lógico no inicio, repetições infinitas com interceptação no meio.
+
+Aula 12
+Condições aninhadas basicamente quando vamos encaixando as coisas.
+Dentro de uma condição eu tenho outras bifurcações.
+Na hora de se programar numca se programa a melhor hipose primeiramente
+programamos todas as opções.
+
+carro.siga()
+
+se carro.esquerda()
+ carro.siga()
+ carro.direita()
+ carro.siga()
+ carro.direita()
+ carro.esquerda()
+ carro.siga()
+ carro.direita()
+ carrosiga()
+ 
+ senao se carro.direita()
+  carro.siga()
+  carro.esquerda()
+  carro.siga()
+  carro.esquerda()
+  carro.siga()
+  
+ senao
+  carro.siga()
+  
+carro.pare()
+
+# python 
+carro.siga()
+
+if carro.esquerda():
+ carro.siga()
+ carro.direita()
+ carro.siga()
+ carro.esquerda()
+ carro.siga()
+ carro.direita()
+ carro.siga()
+ 
+elif carro.direita():
+ carro.siga()
+ carro.esquerda()
+ carro.siga()
+ carro.esquerda()
+ carro.siga()
+ 
+else:
+ carro.siga()
+ 
+carro.pare()
+
+# prática
+nome = str(input('Qual é seu nome? '))
+if nome == 'Gustavo': -> CONDIÇÃO SIMPLES.
+ print('Que nome Bonito!')
+elif nome == 'Maria' or nome == 'Maria' or nome == 'Paulo':
+ print('Seu nome é bem popular no Brasil!')
+elif nome in 'Ana Claudia Jéssica Juliana': -> ESTRUTURA CONDICIONAL ANINHADA.
+ print('Belo nome feminino')
+else:
+ print('Seu nome é bem normal!') -> CONDIÇÃO COMPOSTA.
+print('Tenha um bom dia, {}!'.format(nome))
+
+
+Aula 13
+Estrutura de laços repetição
+iteração com variável de controle
+
+laço c no intervalo(1, 10)
+    passo
+pega
+
+for c in range(1, 10):
+    passo
+pega
+
+laço c no intervalo(0, 3)
+ passo
+ pula
+passo
+pega
+
+for c in range(0, 3):
+ passo
+ pula
+passo
+pega
+
+laco c no intervalo(0, 3):
+ se moeda
+  pega
+ passo
+ pula
+passo
+pega
+
+
+for c in range(0, 3):
+ if moeda:
+  pega
+ passo
+ pula
+passo
+pega
+
+for c in range(1, 6):
+ print('Oi')
+print('Fim')
+
+for c in range(6, 0, -1): start, stop, step
+ print(c)
+print('Fim!')
+
+Aula 14
+Laços de repetição
+Enquanto 
+while
+
+enquanto nao maca
+   passo
+pega
+
+while not maca:
+    passo
+pega
+
+While a vantagem é de quando não sei o limite do range
+utiliza.
+
+Fluxograma
+ 
+   |
+ - <>
+|  |
+|  |
+|  <> - - 
+|  |   passo
+|  |---|
+|  |
+|  <>- -
+|  | pula
+|  |---|
+|  |
+|  <> --
+|   | pega
+|   |--|
+- - - -| 
+    |
+    |fim
+    
+    
+algoritmo
+enquanto nao maca
+    se chao
+        passo
+    fimSe
+    se buraco
+        pula
+    fimSe
+    se moeda
+       pega
+    fimSe
+fimEnquanto    
+       
+sintaxe python
+while not maca:
+  if chao:
+     passo
+  if buraco:
+     pula
+  if moeda:
+     pega
+pega
+
+Exemplo
+# estrutura de repetição for
+'''for c in range(1, 10):
+    print(c)
+print('Fim')'''
+
+# laço de repetição
+c = 1
+while c < 10:
+    print(c)
+    c += 1
+print('Fim')
+
+
+n = 1 # flag condição de parada
+while n != 0:
+ n = int(input('Digite um valor: '))
+print('Fim!')
+
+# flag com String
+r = 'S'
+while resp == 'S':
+    n = int(input('Digite um número: '))
+    r = str(input('Quer continuar [S/N]')).upper().strip()
+print('Fim')
+
+''' Quando não souber a quantidade de entrada para facilitar enquanto não chegar
+a ultima pessoa'''
+
+# par ou impar
+
+n = 1
+par = 0
+impar = 0
+while n != 0:
+    n = int(input('Digite um número: ')
+    if n != 0:
+        if n % 2 == 0:
+            par += 1
+        else:
+            impar += 1
+print('Você digitou o total de {} número pares, {} número impares.'.format(par, impar))    
+
+#validação de dados
+sexo = str(input('Digite seu sexo [M/F]')).strip().upper()[0]
+while sexo not in 'MF':
+ sexo = str(input('Dados errados.Por favor digite seu sexo[M/F]')).strip().upper()[0]
+print('Sexo {} registrado com sucesso!'.format(sexo))
+
+Aula 15
+Interrompendo repetições while
+Aula 15
+Interrompendo repetição while
+
+   |
+|-< >---------
+|  |         |
+|  |         |
+| < >--      |
+|  |  passo  |
+|  |---|     |
+|  |         |
+| < >--      |
+|  |  pula   |
+|  |---|     |
+|  |         |
+| < >--      |
+|  | pega    |
+|  |--|      |
+|  |         |
+| < >--      |
+|  |  pula   |
+|  |   |     |
+|  |  pare   |
+|--|---|     |
+             |
+   -----------
+   |
+   Pega
+   |
+   |
+   fim
+
+Algoritmo
+enquanto verdadeiro
+    se bloco faça
+        passo
+    fimse  
+    se buraco faça
+        pula
+    fimse
+    se moeda faça
+        pega
+    fimse
+    se torfeu faça
+        pula
+        interrompa
+    fimse
+fimenquanto
+pega
+
+Paradigma python
+
+# loop infinito para sempre
+while True:
+ if bloco:
+     passo
+ if buraco:
+     pula
+ if moeda:
+    pega
+ if trofeu:
+     pula
+     break
+pega
+# break funciona para isto jogar para fora do loop
+Exemplo:
+# variavel de controle
+cont = 1
+while cont <= 10:
+    print(cont, '→ ', end='')
+    cont += 1
+print('Acabou')
+
+''' loop infinito
+enquanto não encontrar uma condição verdadeira ela vai
+rodar, ou break'''
+cont = 1
+while True:
+  print(cont, '→ ', end='')
+  cont += 1
+print('acabou')
+
+# com flag
+n = cont = 0
+while n != 999:
+    n = int(input('Digite um número: '))
+    cont += 1
+print('Acabou')
+
+# loop infinito com flag de parada e break.
+n = s = 0
+while True:
+    n = int(input('Digite um número: '))
+    if n == 999:
+        break
+    s += n
+print('A soma vale {}'.format(s)) # PYTHON 3
+'''Atualização do python
+pep - python enrreciment proposito 
+f - strings
+interpolação dentro de strings'''
+print(f'A soma vale {s}') # PYTHON 3.6
+nome = 'José'
+idade = 33
+salario = 987.3
+print(f'O nome {nome} tem {idade} idade.')
+print(f'O {nome} tem {idade} e ganha R${salario:.2f}')
+print('O %s tem %d anos' % (nome, idade)) # PYTHON 2
+
+Aula 17 - Listas
+
+lanche = ['Hanburgue', 'Pizza', 'Suco', 'Pudim']
+lache[1] = 'Coxinha'
+'''o indice 1 que estava com pizza vai ser eliminado
+poque as listas são imutavéis e vai alocar a Coxinha
+Tanto as Tuplas e as Lista elas são valores variáveis compostas
+guarda valores porém as Tuplas são imutáveis e as lista mutaveis'''
+
+#adicionando no final
+lanche.append('cokie')
+#adicionando no index de inicio, e próprio python vai indexando o novo atributo
+lanche.insert(0, 'cachorro_quente')
+#eliminando um indice
+del lanche[3]
+lanche.pop(3)
+# indicando o valor que você quer eliminar
+lanche.remove('Pizza')
+# todos eles elimina o elemento e redimensiona automaticamente
+'''pode dar um erro ao tentar remover um elemento da lista ele não tiver
+para isto usamos um condição sim para primeiro verificar se o elemento está na lista'''
+if 'pizza' in lanche:
+	lanche.remove('Pizza')
+# isto é a pizza está no lanche
+'''criando uma lista com uma função interna, no intervalo de 4 até 11'''
+valores = list(range(4, 11))
+
+'''iniciando uma lista'''
+valores = [8, 3, 2, 5, 6, 9]
+'''oredenando a lista'''
+valores.sort()
+'''ordenando a lista em ordem inversa'''
+valores.sort(reverse=True)
+'''tamanho da lista atenção que ela não começa no indice 0'''
+len(valores)
+''''''
+num = [2, 5, 9, 1]
+num[2] = 3
+num.append(7)  # adiciona
+num.sort(reverse=True)
+num.insert(2, 2) # adiciona no indice 2 o valor 2
+num.remove(2)  # remove o valor 
+# remove em uma lista se não conter o elemento dentro ele explode um erro
+# caso utilizamos uma manobra
+if 4 in num:  # verifica se tem o valor 4 na lista
+	num.remove(4)
+	print('O número 4 foi removido com sucesso! ')
+else:
+	print('O número 4 não existe! ')
+	
+print(num)
+print(f'Essa lista tem {len(num)} elementos. ')
+
+# iniciando uma lista
+valor = []  # pode iniciar assim
+valor = list()  # usando uma função interna
+valor.append(5)  # adicionando valor
+valor.append(9)
+valor.append(4)
+
+print(valor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
